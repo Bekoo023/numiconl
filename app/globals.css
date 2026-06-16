@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────
+   DESIGN TOKENS — niet verwijderen!
+   Dit @theme-blok definieert alle lettertypes en kleuren.
+   De editor-melding "Unknown at rule @theme" is alleen een
+   waarschuwing van VS Code; Tailwind v4 heeft dit nodig en
+   de build werkt prima. (Zet de "Tailwind CSS IntelliSense"-
+   extensie aan om de melding te laten verdwijnen.)
+   ─────────────────────────────────────────────────────────── */
+@theme {
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-accent: #46d39a;
+  --color-paper: #f3eee1;
+  --color-ink: #14140f;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* houdt #features vrij onder de vaste header */
+}
+
+html,
+body {
+  background-color: #0f172a; /* matcht de Three.js-scene, voorkomt witte flits */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(70, 211, 154, 0.25);
+}
+
+/* Zichtbare focus voor wie met het toetsenbord navigeert */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Grote serif-kop: strakkere tracking + optical sizing */
+.display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+}
+
+/* Rustig paneel: subtiele achtergrond + haarscherpe rand (geen zware glas) */
+.surface {
+  background: rgba(15, 18, 30, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+}
+
+/* ── Entree ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal {
+  animation: fadeUp 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* ── De signatuur-beweging: AI die het bonnetje scant ── */
+@keyframes scan {
+  0% {
+    top: 6%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 94%;
+    opacity: 0;
+  }
+}
+.scanbeam {
+  animation: scan 3.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: top;
+}
+
+/* Nep thermische-printer barcode */
+.barcode {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-ink) 0 2px,
+    transparent 2px 4px,
+    var(--color-ink) 4px 7px,
+    transparent 7px 9px,
+    var(--color-ink) 9px 10px,
+    transparent 10px 14px
+  );
+}
+
+/* Gescheurde, geperforeerde onderrand van het bonnetje */
+.receipt-tear::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  height: 11px;
+  background:
+    linear-gradient(-45deg, transparent 66%, var(--color-paper) 0) 0 0 / 13px 13px
+      repeat-x,
+    linear-gradient(45deg, transparent 66%, var(--color-paper) 0) 0 0 / 13px 13px
+      repeat-x;
+}
+
+/* Respecteer "verminder beweging" */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .scanbeam {
+    animation: none;
+    opacity: 0;
+  }
+}
