@@ -37,7 +37,12 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 mb-12">
           <div className="max-w-xs">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-trans.png"
+                alt="Numico"
+                className="w-8 h-8 object-contain"
+              />
               <span className="display text-white text-xl tracking-tight">Numico</span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">

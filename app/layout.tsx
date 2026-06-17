@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ThreeScene from "@/components/ThreeScene";
+import SiteShell from "@/components/SiteShell";
 
 // Zelf-gehoste lettertypes (geen externe requests bij het laden)
 import "@fontsource-variable/fraunces";
@@ -9,7 +7,7 @@ import "@fontsource-variable/hanken-grotesk";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 
-import "./globals.css"; // <- dit moet hier staan, anders laadt er geen styling
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Numico — van bonnetje naar boeking",
@@ -28,26 +26,7 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <body>
-        <div className="min-h-screen flex flex-col bg-[#0b1018] relative overflow-hidden text-white">
-          {/* Three.js-achtergrond — één keer voor de hele app */}
-          <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
-            <ThreeScene />
-          </div>
-
-          {/* Leesbaarheids-waas: houdt tekst scherp over het bewegende deeltjesveld */}
-          <div
-            className="fixed inset-0 z-0 pointer-events-none"
-            aria-hidden="true"
-            style={{
-              background:
-                "radial-gradient(120% 80% at 50% 0%, rgba(11,16,24,0) 40%, rgba(11,16,24,0.65) 100%)",
-            }}
-          />
-
-          <Header />
-          <main className="relative z-10 flex-1">{children}</main>
-          <Footer />
-        </div>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

@@ -191,7 +191,7 @@ export default function Home() {
                 <div className="scanbeam absolute left-3 right-3 h-[2px] bg-accent rounded-full shadow-[0_0_14px_3px_rgba(70,211,154,0.7)]" />
 
                 <div className="num text-center text-[13px] font-medium tracking-tight mb-1">
-                  ALBERT HEIJN 1043
+                  SUPERMARKT 1043
                 </div>
                 <div className="num text-center text-[10px] text-ink/60 mb-4">
                   Amsterdam · 14-06-2026 · 17:42
@@ -259,7 +259,7 @@ export default function Home() {
               </div>
 
               <div className="space-y-2.5 text-sm">
-                <Row label="Leverancier" value="Albert Heijn" />
+                <Row label="Leverancier" value="SUPERMARKT 1043" />
                 <Row label="Datum" value="14 jun 2026" mono />
                 <Row label="Categorie" value="Boodschappen" />
                 <Row label="Btw (9%)" value="€ 2,31" mono />

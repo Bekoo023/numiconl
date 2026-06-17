@@ -22,7 +22,12 @@ const Header: React.FC = () => {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-accent" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo-trans.png"
+            alt="Numico"
+            className="w-8 h-8 object-contain"
+          />
           <span className="display text-white text-xl tracking-tight">Numico</span>
         </Link>
 
